@@ -2,6 +2,7 @@ import useGenra, { Genra } from "../hooks/useGenra";
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -24,16 +25,20 @@ const GenraList = ({ onSelected, selectedGenre }: Props) => {
   }
   return (
     <>
+    <Heading fontSize="2xl" mb={3}>Genres</Heading>
       <List>
         {data.map((genra) => (
           <ListItem key={genra.id} py={"5px"}>
             <HStack>
               <Image
+                objectFit='cover'
                 src={GetCroppedImageUrl(genra.image_background)}
                 boxSize="32px"
                 borderRadius={8}
               />
               <Button
+                whiteSpace="normal"
+                textAlign="left"
                 fontWeight={genra.id === selectedGenre?.id ? "bold" : "normal"}
                 color={genra.id === selectedGenre?.id ? "red" : "white"}
                 fontSize="lg"
